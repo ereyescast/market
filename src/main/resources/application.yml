@@ -1,0 +1,47 @@
+spring:
+
+  thymeleaf:
+    cache: false
+
+  mail: 
+    host: smtp.gmail.com
+    username: minimarket.contactenos@gmail.com
+    password: Peru123.
+    port: 587
+    properties: 
+      mail:
+        smtp: 
+          starttls:
+            enable: true
+           
+  datasource:   
+    name: mydb
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://market.cnzedtybwvs9.us-west-2.rds.amazonaws.com:3306/market?useSSL=false
+    
+    username: admin
+    password: milena01
+    
+  jpa: 
+    show-sql: true
+    hibernate: 
+      ddl-auto: update
+      naming:
+        implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyJpaImpl
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+    properties: 
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL5Dialect
+        
+server:
+  port: 5000
+
+
+
+     
+      
+
+ 
+  
+ 
+          

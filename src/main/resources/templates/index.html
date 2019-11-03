@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<title>Minimarket</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Amatic+SC">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="shortcut icon" type="image/x-icon" href="/imgs/icono.ico" />
+<style>
+body, html {height: 100%}
+body,h1,h2,h3,h4,h5,h6 {
+	font-family: Tahoma, Geneva, sans-serif;
+	}
+.menu {display: none}
+.bgimg {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-image: url("/imgs/m2.jpg");
+  min-height: 90%;
+}
+
+.button {
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+</style>
+<body>
+<!-- Navbar -->
+<div class="w3-top">
+  <div class="w3-bar w3-black w3-card w3-opacity w3-hover-opacity-off">
+    <a class="w3-bar-item w3-button w3-padding-large w3-hide-medium w3-hide-large w3-right" href="javascript:void(0)" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
+    
+
+	
+	<a href="./index" class="w3-bar-item w3-button w3-padding-large">INICIO</a>
+	
+    
+    
+    <a href="#menu" class="w3-bar-item w3-button w3-padding-large w3-hide-small">PRECIOS</a>
+    <a href="#about" class="w3-bar-item w3-button w3-padding-large w3-hide-small">NOSOTROS</a>
+    <a href="#contact" class="w3-bar-item w3-button w3-padding-large w3-hide-small">CONTÁCTENOS</a>
+
+   
+  </div>
+</div>
+
+<!-- Navbar on small screens (remove the onclick attribute if you want the navbar to always show on top of the content when clicking on the links) -->
+<div id="navDemo" class="w3-bar-block w3-black w3-hide w3-hide-large w3-hide-medium w3-top w3-opacity" style="margin-top:46px">
+  <a href="#menu" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">PRECIOS</a>
+  <a href="#about" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">NOSOTROS</a>
+  <a href="#contact" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">CONTÁCTENOS</a>
+  
+</div>
+
+
+
+  
+<!-- Header with image -->
+<header class="bgimg w3-display-container" id="home">
+
+ 
+	<div class="w3-display-middle w3-center w3-opacity-min w3-hover-opacity-off">
+    <h1 class="w3-jumbo w3-black " >Distribuidora Ortiz</h1>
+	 <p><a href="#menu" class="w3-button w3-large w3-black">Precios</a></p>
+  </div>
+   
+  
+</header>
+
+
+<!-- Menu Container -->
+<div class="w3-container w3-black w3-padding-64 w3-xlarge" id="menu">
+  <div class="w3-content">
+  
+    <h1 class="w3-center w3-xxxlarge" style="margin-bottom:64px">Listado de precios</h1>
+    <div class="w3-row w3-center w3-border w3-border-dark-grey">
+      <a href="javascript:void(0)" onclick="openMenu(event, 'Pizza');" id="myLink">
+        <div class="w3-col s4 tablink w3-hover-red">Verduras</div>
+      </a>
+      <a href="javascript:void(0)" onclick="openMenu(event, 'Pasta');">
+        <div class="w3-col s4 tablink w3-hover-red">Frutas</div>
+      </a>
+      <a href="javascript:void(0)" onclick="openMenu(event, 'Starter');">
+        <div class="w3-col s4 tablink w3-hover-red">Ofertas</div>
+      </a>
+    </div>
+
+    <div id="Pizza" class="w3-container menu w3-padding-32 w3-white">
+   
+    
+   
+      	<table class="w3-table w3-hoverable  w3-centered">
+				<thead>
+					<tr class="w3-light-blue">	
+						<th>Nombre</th>	
+						<th>Precio(S/. x Kg)</th>
+					</tr>
+				</thead>
+				
+				<tbody>
+					
+					<tr th:each="verdura : ${verdura}">
+						<td th:text="${verdura.nombre}"></td>
+						
+						<td th:text="${verdura.precio}"></td>
+						
+					</tr>
+					
+				</tbody>
+		</table>
+    </div>
+
+    <div id="Pasta" class="w3-container menu w3-padding-32 w3-white">
+  
+   
+      <table class="w3-table w3-hoverable w3-centered">
+				<thead>
+					<tr class="w3-light-blue">	
+						<th>Nombre</th>	
+						<th>Precio(S/. x Kg)</th>
+					</tr>
+				</thead>
+				
+				<tbody>
+					
+					<tr th:each="fruta : ${fruta}">
+						<td th:text="${fruta.nombre}"></td>
+						<td th:text="${fruta.precio}"></td>
+					</tr>
+					
+				</tbody>
+		</table>
+		<br>
+		<div align="center">
+		<a href="#" th:href="@{/fruta/download}">
+		<button class="button">Exportar Listado</button>
+		</a>
+		
+	
+    	</div>
+    </div>
+
+
+    <div id="Starter" class="w3-container menu w3-padding-32 w3-white">
+      <table class="w3-table w3-hoverable w3-centered">
+				<h2 align="center">Frutas</h2>
+				<thead>
+					<tr class="w3-light-blue">	
+						<th>Nombre</th>	
+						<th>Precio(S/. x Kg)</th>
+					</tr>
+				</thead>
+				
+				<tbody>
+					
+					<tr th:each="fruta : ${ofertaFruta}">
+						<td th:text="${fruta.nombre}"></td>
+						<td th:text="${fruta.precio}"></td>
+					</tr>
+					
+				</tbody>
+		</table>
+     	<table class="w3-table w3-hoverable w3-centered">
+				<h2 align="center">Verduras</h2>
+				<thead>
+					<tr class="w3-light-blue">	
+						<th>Nombre</th>	
+						<th>Precio(S/. x Kg)</th>
+					</tr>
+				</thead>
+				
+				<tbody>
+					
+					<tr th:each="fruta : ${ofertaVerdura}">
+						<td th:text="${fruta.nombre}"></td>
+						<td th:text="${fruta.precio}"></td>
+					</tr>
+					
+				</tbody>
+		</table>
+    </div><br>
+
+  </div>
+</div>
+
+<!-- About Container -->
+<div class="w3-container w3-padding-64 w3-red w3-xlarge" id="about">
+  <div class="w3-content">
+    <h1 class="w3-center w3-xxxlarge" style="margin-bottom:64px">Nosotros</h1>
+    <p align="justify">En la actualidad las personas no cuentan con el tiempo suficiente para buscar todos los productos que necesitan, en especial las frutas y verduras; ahora desean encontrar todo en un sólo lugar de manera rápida, fácil y económica. Por ello, en el año 2019, nace la Distribuidora Ortiz, un negocio diseñado a las necesidades de nuestros clientes con un único próposito, que el cliente se sienta en casa y que sus compras diarias sean una experiencia gratificante.
+<br/>
+<br/>
+
+Distribuidora Ortiz es algo más que una tienda, representa un estilo de compras innovador y emprendedor, se busca que nuestros clientes se sientan satisfechos con sus productos de calidad y sobre todo frescos para disfrutar al máximo la frescura de la vida.
+<br/>
+<br/>
+Distribuidora Ortiz es una de las tiendas más grandes del Centro Comercial "San Alfonso" y cuenta con un personal calificado y dedicado a satisfacer todas las necesidades de nuestros clientes, orientandolos a que su compra sea provechosa. 
+<br/>
+<br/>
+Los esperamos.
+</p>
+    
+    <br>
+    <img src="/imgs/about1.png" style="width:150px" class="w3-circle" alt="Chef">
+    <p><strong>Administrador:</strong> Sr. William</p>
+	<br>
+
+    <img src="/imgs/m5.jpg" style="width:100%" class="w3-margin-top w3-margin-bottom" alt="Restaurant">
+    <h1><b>Horario de Atención:</b></h1>
+    
+    <div class="w3-row">
+      <div class="w3-col s6">
+        <p>Lunes y Jueves CERRADO</p>
+        <p>Martes 08:00am - 04:00pm</p>
+        <p>Miércoles 08:00am - 04:00pm</p>
+      </div>
+      <div class="w3-col s6">
+        <p>Viernes 08:00am - 04:00pm</p>
+        <p>Sábado 08:00am - 04:00pm</p>
+        <p>Domingo 08:00am - 04:00pm</p>
+      </div>
+    </div>
+    
+   
+    <p align="center">
+	<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3902.3561190910987!2d-76.88818753528513!3d-12.01898629148583!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9105c3c5adc29789%3A0x2e0af5f1de02638f!2sVERDULERIA%20%22EL%20TARME%C3%91O%22!5e0!3m2!1ses-419!2spe!4v1571633297445!5m2!1ses-419!2spe" width="90%" height="450" style="border:0;"></iframe>
+	</p>
+	
+
+  </div>
+</div>
+
+
+
+
+<!-- Contact -->
+<div class="w3-container w3-padding-64 w3-blue-grey w3-grayscale-min w3-xlarge" id="contact">
+  <div class="w3-content">
+    <h1 class="w3-center w3-xxxlarge" style="margin-bottom:64px">Contáctenos</h1>
+   
+	
+	<p align="justify">Para contactarnos a través de whatsapp, click <a href="https://api.whatsapp.com/send?phone=51958431162&text=Hola que tal, necesito hacerle una consulta.">
+    aquí.<img src="/imgs/whatsapp.png" style="width:78px;height:58px;">
+    </a></p>
+ 
+     <p align="justify">Para contactarnos a través del email, por favor sírvase completar los campos del formulario mostrado a continuación. Luego pulse el botón "Enviar" para remitir sus comentarios.
+    </p>
+    <form action="#" th:action="@{/index}" th:object="${correo}" method="post">
+    	
+      <p><input class="w3-input w3-padding-16 w3-border" type="text" th:field="*{nombre}" placeholder="Nombre" onkeyup="lettersOnly(this)" required></p>
+      <p><input class="w3-input w3-padding-16 w3-border" type="text" th:field="*{apellido}" placeholder="Apellidos" onkeyup="lettersOnly(this)" required></p>
+
+
+      <p><input class="w3-input w3-padding-16 w3-border" type="text" th:field="*{celular}" placeholder="Celular" minlength="9" maxlength="9" onkeypress="isInputNumber(event)" required></p>
+      <select class="w3-input w3-padding-16 w3-border" th:field="*{motivo}" required>
+				<option value="">--Seleccione Motivo--</option>
+				<option value="COMENTARIO">COMENTARIO</option>
+  				<option value="RECLAMO">RECLAMO</option>
+  				<option value="PEDIDO">PEDIDO</option>
+  				<option value="OTRO">OTRO</option>
+  	  </select>
+  	  <p><input class="w3-input w3-padding-16 w3-border" th:field="*{email}" type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" placeholder="E-mail" required></p>
+      <textarea class="w3-input w3-padding-16 w3-border" th:field="*{texto}" placeholder="Ingrese el texto correspondiente" rows="4" cols="50" required></textarea>
+      <p><button class="w3-button w3-light-grey w3-block" type="submit">ENVIAR</button></p>
+    </form>
+  </div>
+</div>
+
+<!-- Footer -->
+<footer class="w3-center w3-black w3-padding-48 w3-xxlarge">
+  <p>Minimarket El Tarmeño - Todos los derechos reservados.</p>
+</footer>
+
+<script>
+// Used to toggle the menu on small screens when clicking on the menu button
+function lettersOnly(input) {
+    var regex = /[^áéíóúa-zñ ]/gi;
+    input.value = input.value.replace(regex, "");
+    //input.value = input.value.substr(0, 1).toUpperCase() + input.value.substr(1);
+    //input.value = input.value.replace(/^./, Function.call.bind("".toUpperCase))
+    input.value = input.value.replace(/\b(\w+)/g, function(m,p){ return p.toUpperCase()});
+    input.value = input.value.toUpperCase();
+}
+
+function myFunction() {
+  var x = document.getElementById("navDemo");
+  if (x.className.indexOf("w3-show") == -1) {
+    x.className += " w3-show";
+  } else { 
+    x.className = x.className.replace(" w3-show", "");
+  }
+}
+
+function isInputNumber(evt){
+    var ch = String.fromCharCode(evt.which);
+    if(!(/[0-9]/.test(ch))){
+        evt.preventDefault();
+    }  
+}
+// Tabbed Menu
+function openMenu(evt, menuName) {
+  var i, x, tablinks;
+  x = document.getElementsByClassName("menu");
+  for (i = 0; i < x.length; i++) {
+     x[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tablink");
+  for (i = 0; i < x.length; i++) {
+     tablinks[i].className = tablinks[i].className.replace(" w3-red", "");
+  }
+  document.getElementById(menuName).style.display = "block";
+  evt.currentTarget.firstElementChild.className += " w3-red";
+}
+document.getElementById("myLink").click();
+</script>
+
+</body>
+</html>

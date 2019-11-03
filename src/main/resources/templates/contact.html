@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+    <title>Sample Email</title>
+    
+    <meta charset="UTF-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1"/>
+	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"/>
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins"/>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    
+</head>
+<body>
+	<div class="w3-responsive">
+			<table class="w3-table-all">
+	<tr>
+    <td><strong> Cliente:</strong></td>
+    <td th:text="${sampleText.nombre} + ' ' + ${sampleText.apellido}"></td>
+    </tr>
+    
+    <tr>
+    <td><strong> <span th:text="${sampleText.tipo}"></span>:</strong></td>
+    <td th:text="${sampleText.nro}"></td>
+    </tr>
+   
+    <tr>
+    <td><strong> Celular:</strong></td>
+    <td th:text="${sampleText.celular}"></td>
+    </tr>
+
+	<tr>
+    <td><strong> Motivo:</strong></td>
+    <td th:text="${sampleText.motivo}"></td>
+    </tr>
+    
+    <tr>
+    <td><strong> Email:</strong></td>
+    <td th:text="${sampleText.email}"></td>
+    </tr>
+    
+    <tr>
+    <td><strong> Texto:</strong></td>
+    <td th:text="${sampleText.texto}"></td>
+    </tr>
+    </table>
+ 	</div>
+</body>
+</html>
